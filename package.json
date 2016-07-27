@@ -1,0 +1,37 @@
+{
+    "name": "mayaport",
+    "displayName": "MayaPort",
+    "description": "Simple Maya text editor command port interface",
+    "version": "0.0.1",
+    "publisher": "JonMacey",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.sayHello"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "commands": [{
+            "command": "extension.sayHello",
+            "title": "mayaPort"
+        },
+        {
+            "command": "extension.showMayaConfig",
+            "title" : "showConfig"
+        },
+        {
+            "command": "extension.sendToMaya",
+            "title" : "sendToMaya"
+        }]
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "vscode": "^0.11.0"
+    }
+}
