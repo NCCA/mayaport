@@ -11,14 +11,18 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onCommand:extension.openMayaPort"
     ],
     "main": "./extension",
     "contributes": {
         "commands": [
         {
+            "command": "extension.openMayaPort",
+            "title" : "openMayaPort"
+        },    
+        {
             "command": "extension.showMayaConfig",
-            "title" : "showConfig"
+            "title" : "showMayConfig"
         },
         {
             "command": "extension.sendPythonToMaya",

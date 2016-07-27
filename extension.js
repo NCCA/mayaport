@@ -9,10 +9,17 @@ var socketMel;
 // your extension is activated the very first time the command is executed
 function activate(context) {
 
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    socketPython = net.createConnection({port: 7002});
-    socketMel = net.createConnection({port: 7003});
+
+    var disposable = vscode.commands.registerCommand('extension.openMayaPort', () => {
+        // The code you place here will be executed every time your command is executed
+        socketPython = net.createConnection({port: 7002});
+        socketMel = net.createConnection({port: 7003});
+
+        vscode.window.showInformationMessage('ports opened');
+    });
+    
+    context.subscriptions.push(disposable);
+
 
 
 var disposable = vscode.commands.registerCommand('extension.showMayaConfig', function () {
