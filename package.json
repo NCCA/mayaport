@@ -15,17 +15,18 @@
     ],
     "main": "./extension",
     "contributes": {
-        "commands": [{
-            "command": "extension.sayHello",
-            "title": "mayaPort"
-        },
+        "commands": [
         {
             "command": "extension.showMayaConfig",
             "title" : "showConfig"
         },
         {
-            "command": "extension.sendToMaya",
-            "title" : "sendToMaya"
+            "command": "extension.sendPythonToMaya",
+            "title" : "sendPythonToMaya"
+        },
+        {
+            "command": "extension.sendMelToMaya",
+            "title" : "sendMelToMaya"
         }]
     },
     "scripts": {
