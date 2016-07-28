@@ -2,7 +2,7 @@
     "name": "mayaport",
     "displayName": "MayaPort",
     "description": "Simple vscode to Maya  command port interface for mel and python scripts",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "publisher": "JonMacey",
     "engines": {
         "vscode": "^1.0.0"
@@ -10,13 +10,12 @@
     "icon": "logo.png",
     "homepage": "https://nccastaff.bournemouth.ac.uk/jmacey/",
     "repository": {
-		"type": "git",
-		"url": "https://github.com/NCCA/mayaport"
-	},
-	"bugs": {
-		"url": "https://github.com/NCCA/mayaport/issues"
-	},
-
+        "type": "git",
+        "url": "https://github.com/NCCA/mayaport"
+    },
+    "bugs": {
+        "url": "https://github.com/NCCA/mayaport/issues"
+    },
     "categories": [
         "Other"
     ],
@@ -25,50 +24,51 @@
     ],
     "main": "./extension",
     "contributes": {
-        "commands": [{
-            "command": "extension.openMayaPort",
-            "title": "mayaPort"
-        },
-        {
-            "command": "extension.sendPythonToMaya",
-            "title" : "sendPythonToMaya"
-        },
-        {
-            "command": "extension.sendMelToMaya",
-            "title" : "sendMelToMaya"
-        }
+        "commands": [
+            {
+                "command": "extension.openMayaPort",
+                "title": "mayaPort"
+            },
+            {
+                "command": "extension.sendPythonToMaya",
+                "title": "sendPythonToMaya"
+            },
+            {
+                "command": "extension.sendMelToMaya",
+                "title": "sendMelToMaya"
+            }
         ],
         "configuration": {
-        "type": "object",
-        "title": "port configuration",
-        "properties": {
-            "mayaport.melPortID": {
-                "type": "integer",
-                "default": 7001,
-                "description": "the port to send the mel commands ensure they are the same as maya"
-            },
-            "mayaport.pythonPortID": {
-                "type": "integer",
-                "default": 7002,
-                "description": "the port to send the python commands ensure they are the same as maya"
+            "type": "object",
+            "title": "port configuration",
+            "properties": {
+                "mayaport.melPortID": {
+                    "type": "integer",
+                    "default": 7001,
+                    "description": "the port to send the mel commands ensure they are the same as maya"
+                },
+                "mayaport.pythonPortID": {
+                    "type": "integer",
+                    "default": 7002,
+                    "description": "the port to send the python commands ensure they are the same as maya"
+                }
             }
-        }
+        },
+        "keybindings": [
+            {
+                "command": "extension.sendPythonToMaya",
+                "key": "ctrl+shift+p",
+                "mac": "ctrl+shift+p",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "extension.sendMelToMaya",
+                "key": "ctrl+shift+m",
+                "mac": "ctrl+shift+m",
+                "when": "editorTextFocus"
+            }
+        ]
     },
-    "keybindings": [{
-        "command": "extension.sendPythonToMaya",
-        "key": "ctrl+shift+p",
-        "mac": "ctrl+shift+p",
-        "when": "editorTextFocus"
-    },
-    {
-        "command": "extension.sendMelToMaya",
-        "key": "ctrl+shift+m",
-        "mac": "ctrl+shift+m",
-        "when": "editorTextFocus"
-    }
-    ]
-    },
-    
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install"
     },

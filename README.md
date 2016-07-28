@@ -8,19 +8,20 @@ import maya.cmds as cmds
 cmds.commandPort(name=":7001", sourceType="mel")
 cmds.commandPort(name=":7002", sourceType="python")
 ```
-To enable ports at startup 
-1. Create a file named userSetup.mel in the following folder:
+To enable ports at startup create a file named userSetup.mel in the following folder:
+
 ```
 Windows: <drive>:\Documents and Settings\<username>\My Documents\maya\<Version>\scripts
 Mac OS X: ~/Library/Preferences/Autodesk/maya/<version>/scripts.
 Linux: ~/maya/<version>/scripts.
 (where ~ is your home folder)
 ```
-2. In the userSetup.mel file add the following
+
+In the userSetup.mel file add the following
+
 ```
 commandPort -name ":7001" -sourceType "mel";
 commandPort -name ":7002" -sourceType "python";
-
 ```
 
 ## Features
