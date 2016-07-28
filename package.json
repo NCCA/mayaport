@@ -1,12 +1,22 @@
 {
     "name": "mayaport",
     "displayName": "MayaPort",
-    "description": "Simple Maya text editor command port interface",
+    "description": "Simple vscode to Maya  command port interface for mel and python scripts",
     "version": "0.0.1",
     "publisher": "JonMacey",
     "engines": {
         "vscode": "^1.0.0"
     },
+    "icon": "logo.png",
+    "homepage": "https://nccastaff.bournemouth.ac.uk/jmacey/",
+    "repository": {
+		"type": "git",
+		"url": "https://github.com/NCCA/mayaport"
+	},
+	"bugs": {
+		"url": "https://github.com/NCCA/mayaport/issues"
+	},
+
     "categories": [
         "Other"
     ],
@@ -15,14 +25,9 @@
     ],
     "main": "./extension",
     "contributes": {
-        "commands": [
-        {
+        "commands": [{
             "command": "extension.openMayaPort",
-            "title" : "openMayaPort"
-        },    
-        {
-            "command": "extension.showMayaConfig",
-            "title" : "showMayConfig"
+            "title": "mayaPort"
         },
         {
             "command": "extension.sendPythonToMaya",
@@ -31,8 +36,46 @@
         {
             "command": "extension.sendMelToMaya",
             "title" : "sendMelToMaya"
-        }]
+        }
+        ],
+        "configuration": {
+        "type": "object",
+        "title": "port configuration",
+        "properties": {
+            "mayaport.melPortID": {
+                "type": "integer",
+                "default": 7001,
+                "description": "the port to send the mel commands ensure they are the same as maya"
+            },
+            "mayaport.pythonPortID": {
+                "type": "integer",
+                "default": 7002,
+                "description": "the port to send the python commands ensure they are the same as maya"
+            }
+        }
     },
+    "keybindings": [{
+        "command": "extension.sendPythonToMaya",
+        "key": "ctrl+shift+p",
+        "mac": "cmd+shift+p",
+        "when": "editorTextFocus"
+    },
+    {
+        "command": "extension.sendMelToMaya",
+        "key": "ctrl+shift+m",
+        "mac": "cmd+shift+m",
+        "when": "editorTextFocus"
+    }
+    ],
+    "menus": {
+        "editor/title": [{
+            "when": "editorFocus == true",
+            "command": "extension.sendPythonToMaya",
+            "group": "navigation"
+        }]
+    }
+    },
+    
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install"
     },
