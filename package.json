@@ -2,7 +2,7 @@
     "name": "mayaport",
     "displayName": "MayaPort",
     "description": "Simple vscode to Maya  command port interface for mel and python scripts",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "JonMacey",
     "engines": {
         "vscode": "^1.0.0"
