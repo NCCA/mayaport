@@ -1,29 +1,33 @@
 # mayaport README
 
-MayaPort is a simple extension to allow sending the text document or selected text to the maya, you must first enable the commandPort in maya. I've used the example from [here](https://fredrikaverpil.github.io/2013/07/15/send-mel-python-code-from-sublime-text-to-maya/) port as follows
+MayaPort is a simple extension to allow sending the text document or selected text to the maya, you must first enable the commandPort in maya. To open a port for mel and python use the following code, which uses the default values, change to different port values as applicable.
 
 ```
 import maya.cmds as cmds
-
-# Close ports if they were already open under another configuration
-try:
-    cmds.commandPort(name=":7001", close=True)
-except:
-    cmds.warning('Could not close port 7001 (maybe it is not opened yet...)')
-try:
-    cmds.commandPort(name=":7002", close=True)
-except:
-    cmds.warning('Could not close port 7002 (maybe it is not opened yet...)')
-
 # Open new ports
 cmds.commandPort(name=":7001", sourceType="mel")
 cmds.commandPort(name=":7002", sourceType="python")
 ```
+To enable ports at startup 
+1. Create a file named userSetup.mel in the following folder:
+```
+Windows: <drive>:\Documents and Settings\<username>\My Documents\maya\<Version>\scripts
+Mac OS X: ~/Library/Preferences/Autodesk/maya/<version>/scripts.
+Linux: ~/maya/<version>/scripts.
+(where ~ is your home folder)
+```
+2. In the userSetup.mel file add the following
+```
+commandPort -name ":7001" -sourceType "mel";
+commandPort -name ":7002" -sourceType "python";
+
+```
+
 ## Features
 
 You can send both mel and python code via the different commands sendPythonToMaya or sendMelToMaya
 
-To get started use CMD + Shift P and rund mayaPort, this will attempt to open two sockets on the localhost, using ports 7001 and 7002 one for Mel code and one for python code.
+To get started use CMD + Shift P and run mayaPort, this will attempt to open two sockets on the localhost, using ports 7001 and 7002 one for Mel code and one for python code.
 
 To send all the text so maya use CMD + Shift P and run sendMelToMaya or sendPythonToMaya depending upon the code you are writing. If you only wish to send a small segement of code just select the code required and use the same commands.
 
@@ -39,17 +43,17 @@ Autodesk Maya (Should work with all version) tested on Maya 2016 Mac and Linux.
 
 ## Extension Settings
 
-At present the ports are coded in the file ~/.vscode/extensions/JonMacey.mayaport-0.0.1/extension.js to change the values of the ports modify the lines
-
+To set custom port ID's edit the user settings (File > Preferences (Code > Preferences on Mac)) and add the following key values to override the defaults
 ```
-const melPort=7001;
-const pythonPort=7002; 
+{
+    "mayaport.melPortID": 7005,
+    "mayaport.pythonPortID": 7007
+}
 ```
-
-To new values and restart the extension. 
+and restart the extension. 
 ## Known Issues
 
-Still work in progress
+Can occasionally lose connection to maya, not yet tested on windows or linux.
 
 ## Release Notes
 

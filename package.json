@@ -31,19 +31,11 @@
         },
         {
             "command": "extension.sendPythonToMaya",
-            "title" : "sendPythonToMaya",
-            "icon": {
-                "light" : "./media/sendPythonMenuLight.png",
-                "dark" : "./media/sendPythonMenuLight.png"
-            }
+            "title" : "sendPythonToMaya"
         },
         {
             "command": "extension.sendMelToMaya",
-            "title" : "sendMelToMaya",
-            "icon": {
-                "light" : "./media/sendMelMenuLight.png",
-                "dark" : "./media/sendMelMenuLight.png"
-            }
+            "title" : "sendMelToMaya"
         }
         ],
         "configuration": {
@@ -74,14 +66,7 @@
         "mac": "ctrl+shift+m",
         "when": "editorTextFocus"
     }
-    ],
-    "menus": {
-        "editor/title": [{
-            "when": "editorFocus == true",
-            "command": "extension.sendPythonToMaya",
-            "group": "navigation"
-        }]
-    }
+    ]
     },
     
     "scripts": {

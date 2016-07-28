@@ -7,14 +7,12 @@ var socketPython;
 // the socket for the mel port create at startup of script
 var socketMel;
 // variables for ports, can be over ridden in config if you wish to use another port, going to default to 7001 for mel and 7002 for python
-var melPort;
-var pythonPort; 
+var melPort=7001;
+var pythonPort=7002; 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
 
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
     console.log('"mayaport" is now active!');
     console.log('To use make sure the following code is run in Maya python ');
     var msg=`
@@ -39,6 +37,7 @@ cmds.commandPort(name=":7002", sourceType="python")
     var disposable = vscode.commands.registerCommand('extension.openMayaPort', function () 
     {
         var config=vscode.workspace.getConfiguration('mayaport');
+        
         if(config.has("melPortID")){
             melPort=config.get("melPortID");
         }
@@ -62,55 +61,53 @@ cmds.commandPort(name=":7002", sourceType="python")
     context.subscriptions.push(disposable);
 
 
-var disposable = vscode.commands.registerCommand('extension.sendPythonToMaya', function () {
+    var disposable = vscode.commands.registerCommand('extension.sendPythonToMaya', function () {
 
-    var editor = vscode.window.activeTextEditor;
-    var selection = editor.selection;
-    var text;
-    // if we have selected text only send this
-    if (selection.isEmpty != true )
-    {
-        text = editor.document.getText(selection);     
-    }
-    // otherwise send the whole document
-    else
-    {
-        text=editor.document.getText();
-    }
-    socketPython.write(text);
-    socketPython.write('\n');
+        var editor = vscode.window.activeTextEditor;
+        var selection = editor.selection;
+        var text;
+        // if we have selected text only send this
+        if (selection.isEmpty != true )
+        {
+            text = editor.document.getText(selection);     
+        }
+        // otherwise send the whole document
+        else
+        {
+            text=editor.document.getText();
+        }
+        socketPython.write(text);
+        socketPython.write('\n');
+        vscode.window.setStatusBarMessage("Python sent to Maya");
+    
     });
 
     context.subscriptions.push(disposable);
 
-var disposable = vscode.commands.registerCommand('extension.sendMelToMaya', function () {
+    var disposable = vscode.commands.registerCommand('extension.sendMelToMaya', function () {
 
-    //var socket = net.createConnection({port: 7002});
-    var editor = vscode.window.activeTextEditor;
-    var selection = editor.selection;
-    var text;
-    if (selection.isEmpty != true )
-    {
-        text = editor.document.getText(selection);    
-    }
-    else
-    {
-        text=editor.document.getText();
-    }
-    socketMel.write(text);
-    socketMel.write('\n');
-     console.log('attempt to write');
-    });
+        var editor = vscode.window.activeTextEditor;
+        var selection = editor.selection;
+        var text;
+        if (selection.isEmpty != true )
+        {
+            text = editor.document.getText(selection);    
+        }
+        else
+        {
+            text=editor.document.getText();
+        }
+        socketMel.write(text);
+        socketMel.write('\n');
+        vscode.window.setStatusBarMessage("mel sent to Maya");
+
+        });
 
     context.subscriptions.push(disposable);
 
 }
 
-
-
 exports.activate = activate;
-
-
 
 
 
