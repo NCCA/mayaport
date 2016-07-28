@@ -31,11 +31,19 @@
         },
         {
             "command": "extension.sendPythonToMaya",
-            "title" : "sendPythonToMaya"
+            "title" : "sendPythonToMaya",
+            "icon": {
+                "light" : "./media/sendPythonMenuLight.png",
+                "dark" : "./media/sendPythonMenuLight.png"
+            }
         },
         {
             "command": "extension.sendMelToMaya",
-            "title" : "sendMelToMaya"
+            "title" : "sendMelToMaya",
+            "icon": {
+                "light" : "./media/sendMelMenuLight.png",
+                "dark" : "./media/sendMelMenuLight.png"
+            }
         }
         ],
         "configuration": {
@@ -57,13 +65,13 @@
     "keybindings": [{
         "command": "extension.sendPythonToMaya",
         "key": "ctrl+shift+p",
-        "mac": "cmd+shift+p",
+        "mac": "ctrl+shift+p",
         "when": "editorTextFocus"
     },
     {
         "command": "extension.sendMelToMaya",
         "key": "ctrl+shift+m",
-        "mac": "cmd+shift+m",
+        "mac": "ctrl+shift+m",
         "when": "editorTextFocus"
     }
     ],

@@ -28,11 +28,6 @@ To get started use CMD + Shift P and rund mayaPort, this will attempt to open tw
 To send all the text so maya use CMD + Shift P and run sendMelToMaya or sendPythonToMaya depending upon the code you are writing. If you only wish to send a small segement of code just select the code required and use the same commands.
 
 ###Keyboard Shortcuts 
-On Mac 
-Use CMD+SHIFT+P to send python code to Maya.
-Use CMD+SHIFT+M to send mel code to Maya.
-
-Windows + Linux
 
 Use CTRL+SHIFT+P to send python code to Maya.
 Use CTRL+SHIFT+M to send mel code to Maya.
@@ -62,5 +57,4 @@ Initial Alpha release 0.1
 
 ## ToDo
 * See if output from maya can be caputered into the debug console.
-* Add the port values to a config file (perhaps in the package.json).
 * get user feedback and see what else can be added.
