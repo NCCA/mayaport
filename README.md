@@ -24,6 +24,15 @@ commandPort -name ":7001" -sourceType "mel";
 commandPort -name ":7002" -sourceType "python";
 ```
 
+If you require a different client machine it is possible to set the host variable and send to another host. In this case the port needs to be explicitly opened in maya as follows passing in the ip address (or hostname if DNS working etc) of the machine.
+
+```
+import maya.cmds as cmds
+# Open new ports
+cmds.commandPort(name="192.168.0.4:7001", sourceType="mel")
+cmds.commandPort(name="192.168.0.4:7002", sourceType="python")
+```
+
 ## Features
 
 You can send both mel and python code via the different commands sendPythonToMaya or sendMelToMaya
@@ -34,8 +43,15 @@ To send all the text so maya use CMD + Shift P and run sendMelToMaya or sendPyth
 
 ###Keyboard Shortcuts 
 
+On Mac
+
 Use CTRL+SHIFT+P to send python code to Maya.
 Use CTRL+SHIFT+M to send mel code to Maya.
+
+On Windows and Linux
+
+Use ALT+SHIFT+P to send python code to Maya.
+Use ALT+SHIFT+M to send mel code to Maya.
 
 
 ## Requirements
@@ -49,6 +65,7 @@ To set custom port ID's edit the user settings (File > Preferences (Code > Prefe
 {
     "mayaport.melPortID": 7005,
     "mayaport.pythonPortID": 7007
+    "mayaport.mayahost" : "192.168.0.4"
 }
 ```
 and restart the extension. 
@@ -57,8 +74,13 @@ and restart the extension.
 Can occasionally lose connection to maya, not yet tested on windows or linux.
 
 ## Release Notes
+Release 0.3
 
-Initial Alpha release 0.1
+Added the ability to specify the host machine for maya. 
+Updated the key bidings for Windows as the keys clashed with command palette use.
+
+Release 0.2
+Updated README.md as was ill formated in the store.
 
 ## ToDo
 * See if output from maya can be caputered into the debug console.

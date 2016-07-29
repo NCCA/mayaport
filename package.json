@@ -62,13 +62,13 @@
         "keybindings": [
             {
                 "command": "extension.sendPythonToMaya",
-                "key": "ctrl+shift+p",
+                "key": "alt+shift+p",
                 "mac": "ctrl+shift+p",
                 "when": "editorTextFocus"
             },
             {
                 "command": "extension.sendMelToMaya",
-                "key": "ctrl+shift+m",
+                "key": "alt+shift+m",
                 "mac": "ctrl+shift+m",
                 "when": "editorTextFocus"
             }
