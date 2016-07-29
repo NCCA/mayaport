@@ -9,6 +9,7 @@ var socketMel;
 // variables for ports, can be over ridden in config if you wish to use another port, going to default to 7001 for mel and 7002 for python
 var melPort=7001;
 var pythonPort=7002; 
+var mayahost='localhost';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
@@ -44,16 +45,19 @@ cmds.commandPort(name=":7002", sourceType="python")
         if(config.has("pythonPortID")){
             pythonPort=config.get("pythonPortID");
         }
+         if(config.has("mayahost")){
+            mayahost=config.get("mayahost");
+        }
         // create a connection to maya on port 7001 for Mel commands
-        socketMel = net.createConnection({port: melPort});
+        socketMel = net.createConnection( melPort,mayahost);
         socketMel.on('error', function(error) { 
-            vscode.window.showErrorMessage("Unable to connect to port " + melPort + " in maya for Mel");
+            vscode.window.showErrorMessage("Unable to connect to port " + melPort + " on Host " + mayahost +" in maya for Mel " + error.code);
          });
         // create a connection to maya on port 7002 for python commands
 
-        socketPython = net.createConnection({port: pythonPort});
+        socketPython = net.createConnection(pythonPort,mayahost);
         socketPython.on('error', function(error) { 
-            vscode.window.showErrorMessage("Unable to connect to port "+ pythonPort +" in maya for Python");
+            vscode.window.showErrorMessage("Unable to connect to port "+ pythonPort +" on Host "+ mayahost+"  in maya for Python " + error.code);
          });
 
     });

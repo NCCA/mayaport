@@ -2,7 +2,7 @@
     "name": "mayaport",
     "displayName": "MayaPort",
     "description": "Simple vscode to Maya  command port interface for mel and python scripts",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "publisher": "JonMacey",
     "engines": {
         "vscode": "^1.0.0"
@@ -51,6 +51,11 @@
                     "type": "integer",
                     "default": 7002,
                     "description": "the port to send the python commands ensure they are the same as maya"
+                },
+                "mayaport.mayahost": {
+                    "type": "string",
+                    "default": "192.168.0.4",
+                    "description": "the hostname of the maya host machine default to local host"
                 }
             }
         },
