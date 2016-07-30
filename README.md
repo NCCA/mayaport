@@ -5,8 +5,8 @@ MayaPort is a simple extension to allow sending the text document or selected te
 ```
 import maya.cmds as cmds
 # Open new ports
-cmds.commandPort(name=":7001", sourceType="mel")
-cmds.commandPort(name=":7002", sourceType="python")
+cmds.commandPort(name=":7001", sourceType="mel", echoOutput=True)
+cmds.commandPort(name=":7002", sourceType="python", echoOutput=True)
 ```
 To enable ports at startup create a file named userSetup.mel in the following folder:
 

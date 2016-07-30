@@ -53,12 +53,18 @@ cmds.commandPort(name=":7002", sourceType="python")
         socketMel.on('error', function(error) { 
             vscode.window.showErrorMessage("Unable to connect to port " + melPort + " on Host " + mayahost +" in maya for Mel " + error.code);
          });
+        socketMel.on('data', function(data){
+            console.log(data.toString());
+        });
         // create a connection to maya on port 7002 for python commands
 
         socketPython = net.createConnection(pythonPort,mayahost);
         socketPython.on('error', function(error) { 
             vscode.window.showErrorMessage("Unable to connect to port "+ pythonPort +" on Host "+ mayahost+"  in maya for Python " + error.code);
          });
+        socketPython.on('data', function(data){
+            console.log(data.toString());
+        });
 
     });
 
@@ -83,6 +89,7 @@ cmds.commandPort(name=":7002", sourceType="python")
         socketPython.write(text);
         socketPython.write('\n');
         vscode.window.setStatusBarMessage("Python sent to Maya");
+        
     
     });
 
